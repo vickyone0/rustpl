@@ -1,44 +1,38 @@
-pub struct AverageCollection{
-    list: Vec<i32>,
-    average: f64
-}
 
-impl AverageCollection {
-    pub fn add(&mut self, value: i32){
-        self.list.push(value);
-        self.update_average();
-    }
-    
-    pub fn remove(&mut self) -> Option<i32> {
-        let result = self.list.pop();
-        match result{
-            Some(value) => {
-                self.update_average();
-                Some(value)
-            },
-            None =>None,
-        }
-    }
-
-    pub fn average(&self) ->f64{
-        self.average
-    }
-
-    pub fn update_average(&mut self){
-        let total:i32 = self.list.iter().sum();
-
-        self.average = total as f64 / self.list.len() as f64;
-
-    }
-
+use rustpl::{Draw, Screen, Button };
+struct SelectBox {
+    width:u32,
+    height:u32,
+    options:Vec<String>,
 
 }
-fn main() {
-   let mut obj = AverageCollection{
-    list:Vec::new(),
-    average: 0.0,
-   };
 
-   obj.add(5);
-   println!("average :{}" ,obj.average());
+impl Draw for SelectBox {
+    fn draw(&self){
+        //code for draw
+    }
+}
+
+
+fn main(){
+
+    let screen = Screen{
+        components: vec![
+            Box::new(SelectBox{
+                width:10,
+                height:30,
+                options:vec![
+                    String::from("yes"),
+                    String::from("no"),
+                    String::from("maybe")
+                ]
+            }),
+            Box::new(Button{
+                width:20,
+                height:10,
+                label:String::from("Ok"),
+            }),
+        ]
+    };
+   screen.run();
 }
