@@ -1,4 +1,5 @@
 pub mod twosum;
+pub mod ispalintrome;
 
 pub trait Draw{
     fn draw(&self);

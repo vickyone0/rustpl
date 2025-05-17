@@ -1,5 +1,6 @@
 
 use rustpl::{twosum, Button, Draw, Screen };
+use rustpl::ispalintrome::is_palintrome;
 struct SelectBox {
     width:u32,
     height:u32,
@@ -35,10 +36,18 @@ fn main(){
         ]
     };
    screen.run();
+
+//twosum   
 let nums = vec![5 ,4, 5 ,2,7];
 
 let result = twosum::two_sum(nums,10);
 
 print!("that two number sum are : {:?}",result);
+
+//is_palindrome
+let data = String::from("abccba");
+let result = is_palintrome(&data);
+
+println!("{} is a palindrome ? {}", data,result);
 
 }
