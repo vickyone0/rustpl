@@ -1,5 +1,5 @@
 
-use rustpl::{Draw, Screen, Button };
+use rustpl::{twosum, Button, Draw, Screen };
 struct SelectBox {
     width:u32,
     height:u32,
@@ -35,4 +35,10 @@ fn main(){
         ]
     };
    screen.run();
+let nums = vec![5 ,4, 5 ,2,7];
+
+let result = twosum::two_sum(nums,10);
+
+print!("that two number sum are : {:?}",result);
+
 }

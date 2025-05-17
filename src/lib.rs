@@ -1,3 +1,5 @@
+pub mod twosum;
+
 pub trait Draw{
     fn draw(&self);
 }
