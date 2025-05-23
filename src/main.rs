@@ -1,65 +1,32 @@
-
-use rustpl::{twosum, Button, Draw, Screen };
-use rustpl::ispalintrome::is_palintrome;
-use rustpl::rustb::*;
-struct SelectBox {
-    width:u32,
-    height:u32,
-    options:Vec<String>,
-
+struct Rectangle {
+    width: u32,
+    height: u32,
 }
+impl Rectangle {
+    fn area(&self) -> u32 {
+    self.width * self.height
+    }
 
-impl Draw for SelectBox {
-    fn draw(&self){
-        //code for draw
+    fn width(&self) -> u32 {
+        self.width
+    }
+
+    fn can_hold(&self, other: &Rectangle) -> bool {
+        self.width > other.width && self.height > other.height
     }
 }
 
 
 fn main(){
-
-    let screen = Screen{
-        components: vec![
-            Box::new(SelectBox{
-                width:10,
-                height:30,
-                options:vec![
-                    String::from("yes"),
-                    String::from("no"),
-                    String::from("maybe")
-                ]
-            }),
-            Box::new(Button{
-                width:20,
-                height:10,
-                label:String::from("Ok"),
-            }),
-        ]
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
     };
-   screen.run();
+    let rect2 = Rectangle {
+        width: 40,
+        height: 60,
+    };
+    let v = Rectangle::area(&self.rect1);
 
-//twosum   
-let nums = vec![5 ,4, 5 ,2,7];
-
-let result = twosum::two_sum(nums,10);
-
-print!("that two number sum are : {:?}",result);
-
-//is_palindrome
-let data = String::from("abccba");
-let result = is_palintrome(&data);
-
-println!("{} is a palindrome ? {}", data,result);
-
-let black = Color(0, 0, 0);
- let origin = Point(0, 0, 0);
-let subject = AlwaysEqual;
-
-
-
+    print!("Area of the rectangle is {}, {}/n is can hold is avalible ? {}", rect1.width(),rect1.area(), rect2.can_hold(&rect1));
 }
-
-pub struct Color(i32, i32, i32);
-pub struct Point(i32, i32, i32);
-
-struct AlwaysEqual;
