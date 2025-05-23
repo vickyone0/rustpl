@@ -1,6 +1,7 @@
 
 use rustpl::{twosum, Button, Draw, Screen };
 use rustpl::ispalintrome::is_palintrome;
+use rustpl::rustb::*;
 struct SelectBox {
     width:u32,
     height:u32,
@@ -50,4 +51,15 @@ let result = is_palintrome(&data);
 
 println!("{} is a palindrome ? {}", data,result);
 
+let black = Color(0, 0, 0);
+ let origin = Point(0, 0, 0);
+let subject = AlwaysEqual;
+
+
+
 }
+
+pub struct Color(i32, i32, i32);
+pub struct Point(i32, i32, i32);
+
+struct AlwaysEqual;
