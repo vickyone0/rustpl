@@ -1,4 +1,5 @@
 use std::thread;
+use std::fs::File;
 #[derive(Debug)]
 enum IpAddr {
  V4(u8, u8, u8, u8),
@@ -23,7 +24,10 @@ let loopback = IpAddr::V6(String::from("::1"));
 
 
     let value_1 = Some(5);
-    let value_2 = None;
+    //let value_2 = None;
     let value_3 = value_1.unwrap();
-    let value_4 = value_2.unwrap();
+    //let value_4 = value_2.unwrap();
+
+    let path = "text.txt";
+    let file = File::open(path).expect("Failed to open file");
 }
