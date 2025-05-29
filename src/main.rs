@@ -29,5 +29,14 @@ let loopback = IpAddr::V6(String::from("::1"));
     //let value_4 = value_2.unwrap();
 
     let path = "text.txt";
-    let file = File::open(path).expect("Failed to open file");
+    //let file = File::open(path).expect("Failed to open file");
+    fn open_file(path: &str) -> std::io::Result<File> {
+        // Attempt to open the file and return the result
+    let file = File::open(path)?;
+        Ok(file)
+    }
+    match open_file(path) {
+        Ok(file) => println!("File opened successfully: {:?}", file),
+        Err(e) => println!("Error opening file: {}", e),
+    }
 }
