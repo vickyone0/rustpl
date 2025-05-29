@@ -55,6 +55,9 @@ let loopback = IpAddr::V6(String::from("::1"));
         None => println!("The list is empty."),
     }
 
+
+    let point = Point { x: 5, y: 10.0};
+    let float = Point { x: 1.0, y: 4.0 };
     
 }
 
@@ -75,4 +78,10 @@ fn largest_num_in_list<T: std::cmp::PartialOrd>(list: &[T]) -> Option<&T> {
     }
 
     Some(largest)
+}
+
+
+struct Point<T, U> {
+    x: T,
+    y: U,
 }
