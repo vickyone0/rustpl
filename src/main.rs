@@ -1,6 +1,9 @@
 use core::num;
 use std::thread;
 use std::fs::File;
+use rustpl::genimp::Point;
+
+
 #[derive(Debug)]
 enum IpAddr {
  V4(u8, u8, u8, u8),
@@ -56,8 +59,16 @@ let loopback = IpAddr::V6(String::from("::1"));
     }
 
 
-    let point = Point { x: 5, y: 10.0};
+    let point = Point { x: "gji", y: 10.0};
     let float = Point { x: 1.0, y: 4.0 };
+
+    println!("p.x = {}", point.x());
+
+
+    let distance = float.distance_from_origin();
+
+    println!("Distance from origin: {}", distance);
+
     
 }
 
@@ -81,7 +92,3 @@ fn largest_num_in_list<T: std::cmp::PartialOrd>(list: &[T]) -> Option<&T> {
 }
 
 
-struct Point<T, U> {
-    x: T,
-    y: U,
-}

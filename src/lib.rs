@@ -2,6 +2,7 @@ pub mod twosum;
 pub mod ispalintrome;
 //pub mod lengthoflongstring;
 pub mod rustb;
+pub mod genimp;
 
 pub trait Draw{
     fn draw(&self);
