@@ -48,22 +48,29 @@ let loopback = IpAddr::V6(String::from("::1"));
         None => println!("The list is empty."),
     }
 
+    let chara = vec!['a', 'e','i', 'o','u'];
+
+    match largest_num_in_list(&chara) {
+        Some(largest) => println!("The largest number is: {}", largest),
+        None => println!("The list is empty."),
+    }
+
     
 }
 
 
-fn largest_num_in_list(list: &[i32]) -> Option<i32> {
+fn largest_num_in_list<T: std::cmp::PartialOrd>(list: &[T]) -> Option<&T> {
 
     if list.is_empty() {
         return None;
     }
 
-    let mut largest = list[0];
+    let mut largest = &list[0];
 
     for num in list {
 
         if num > &largest {
-            largest = *num;
+            largest = num;
         }
     }
 
