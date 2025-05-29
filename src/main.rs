@@ -1,3 +1,4 @@
+use core::num;
 use std::thread;
 use std::fs::File;
 #[derive(Debug)]
@@ -39,4 +40,32 @@ let loopback = IpAddr::V6(String::from("::1"));
         Ok(file) => println!("File opened successfully: {:?}", file),
         Err(e) => println!("Error opening file: {}", e),
     }
+
+    let numbers = vec![1, 2, 3, 4, 5];
+
+    match largest_num_in_list(&numbers) {
+        Some(largest) => println!("The largest number is: {}", largest),
+        None => println!("The list is empty."),
+    }
+
+    
+}
+
+
+fn largest_num_in_list(list: &[i32]) -> Option<i32> {
+
+    if list.is_empty() {
+        return None;
+    }
+
+    let mut largest = list[0];
+
+    for num in list {
+
+        if num > &largest {
+            largest = *num;
+        }
+    }
+
+    Some(largest)
 }
