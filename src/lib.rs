@@ -3,6 +3,7 @@ pub mod ispalintrome;
 //pub mod lengthoflongstring;
 pub mod rustb;
 pub mod genimp;
+pub mod advgen;
 
 pub trait Draw{
     fn draw(&self);

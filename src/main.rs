@@ -2,6 +2,7 @@ use core::num;
 use std::thread;
 use std::fs::File;
 use rustpl::genimp::Point;
+use rustpl::advgen::Point as AdvPoint;
 
 
 #[derive(Debug)]
@@ -68,6 +69,11 @@ let loopback = IpAddr::V6(String::from("::1"));
     let distance = float.distance_from_origin();
 
     println!("Distance from origin: {}", distance);
+
+    let adv_point1 = AdvPoint { x: 5, y: "jei" };
+    let adv_point2 = AdvPoint { x: 15, y: "mk" };
+    let mixed_point = adv_point1.mix_up(adv_point2);
+    println!("Mixed Point: x = {}, y = {}", mixed_point.x, mixed_point.y);
 
     
 }
