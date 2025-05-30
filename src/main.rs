@@ -76,6 +76,39 @@ let loopback = IpAddr::V6(String::from("::1"));
     println!("Mixed Point: x = {}, y = {}", mixed_point.x, mixed_point.y);
 
     
+
+    use std::thread;
+
+    let mut handles = vec![];
+
+    for i in 0..10000{
+        let hanlde = thread::spawn(move ||{
+            let res = reqwest::blocking::Client::new()
+            .post("https://jsonplaceholder.typicode.com/posts")
+                .body(format!("{{\"id\": {}}}", i))
+                .send();
+
+            match res {
+                Ok(r) => {
+                    if r.status().is_success() {
+                        println!("Thread {}: Request successful", i);
+                    } else {
+                        println!("Thread {}: Request failed with status: {}", i, r.status());
+                    }
+                },
+                Err(e) => {
+                    println!("Thread {}: Request failed with error: {}", i, e);
+                }
+
+            }
+        });
+
+        handles.push(hanlde);
+    }
+
+    for handle in handles {
+        handle.join().unwrap();
+    }
 }
 
 
