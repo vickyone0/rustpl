@@ -127,6 +127,17 @@ let loopback = IpAddr::V6(String::from("::1"));
     println!("News Article Summary: {}", news_article.summarize());
 
     println!("Tweet Summary: {}", tweet.summarize());
+
+    pub fn notify<T, U>(item1: &T, item2: &U) 
+    where
+        T: Summary,
+        U: Summary,{
+        println!("Breaking news! {} and {}", item1.summarize(), item2.summarize());
+    }
+    notify(&news_article, &tweet);
+
+
+
 }
 
 
