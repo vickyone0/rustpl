@@ -4,6 +4,7 @@ pub mod ispalintrome;
 pub mod rustb;
 pub mod genimp;
 pub mod advgen;
+pub mod traits;
 
 pub trait Draw{
     fn draw(&self);

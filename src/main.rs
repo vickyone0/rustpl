@@ -3,6 +3,7 @@ use std::thread;
 use std::fs::File;
 use rustpl::genimp::Point;
 use rustpl::advgen::Point as AdvPoint;
+use rustpl::traits::*;
 
 
 #[derive(Debug)]
@@ -81,7 +82,7 @@ let loopback = IpAddr::V6(String::from("::1"));
 
     let mut handles = vec![];
 
-    for i in 0..10000{
+    for i in 0..10{
         let hanlde = thread::spawn(move ||{
             let res = reqwest::blocking::Client::new()
             .post("https://jsonplaceholder.typicode.com/posts")
@@ -109,6 +110,23 @@ let loopback = IpAddr::V6(String::from("::1"));
     for handle in handles {
         handle.join().unwrap();
     }
+
+
+    let news_article = NewsArticle {
+        headline: String::from("Breaking News"),
+        content: String::from("This is the content of the news article."),
+        loction: String::from("New York"),
+        author: String::from("John Doe"),
+    };
+    let tweet = Tweet {
+        username: String::from("johndoe"),
+        content: String::from("This is a tweet."),
+        reply: false,
+        retweet: false,
+    };
+    println!("News Article Summary: {}", news_article.summarize());
+
+    println!("Tweet Summary: {}", tweet.summarize());
 }
 
 
