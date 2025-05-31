@@ -138,7 +138,18 @@ let loopback = IpAddr::V6(String::from("::1"));
 
 
 
+let string1 = String::from("Hello");
+let result;
+{
+let string2 = String::from("World");
+result = longest(string1.as_str(), string2.as_str());
 }
+println!("The longest string is: {}", result);
+}
+
+
+
+
 
 
 fn largest_num_in_list<T: std::cmp::PartialOrd>(list: &[T]) -> Option<&T> {
@@ -160,3 +171,10 @@ fn largest_num_in_list<T: std::cmp::PartialOrd>(list: &[T]) -> Option<&T> {
 }
 
 
+fn longest<'a> (x: &'a str, y: &'a str) -> &'a str {
+    if x.len() > y.len() {
+        x
+    } else {
+        y
+    }
+}
